@@ -17,8 +17,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ExtendViewPager vpg;
-    private List<View> views;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,22 +25,20 @@ public class MainActivity extends AppCompatActivity {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
         setContentView(R.layout.activity_main);
-        vpg = ((ExtendViewPager) findViewById(R.id.viewpager));
-        views = new ArrayList<>();
+        ExtendViewPager vpg = ((ExtendViewPager) findViewById(R.id.viewpager));
+        List<View> views = new ArrayList<>();
         for (int i = 1; i < 4; i++) {
             ImageView view = new ImageView(this);
             view.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-//            if (i == 1) {
-//                view.setImageResource(R.mipmap.one);
-//            } else if(i == 2){
-//                view.setImageResource(R.mipmap.two);
-//            }else{
-//                view.setImageResource(R.mipmap.three);
-//            }
             view.setImageResource(R.mipmap.ic_launcher);
             views.add(view);
         }
-        vpg.setAdapter(new VpgAdapter(this,vpg.getViewpager(),views));
+        vpg.setAdapter(new VpgAdapter(views));
+
+        vpg.setPageTransformer(true,new DepthPageTransformer());
+
+        ExtendViewPager viewPager = (ExtendViewPager) findViewById(R.id.viewpager);
+        viewPager.setBackgroundImage(R.mipmap.bg_feet);
     }
 
 }

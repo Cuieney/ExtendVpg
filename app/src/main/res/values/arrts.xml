@@ -2,17 +2,8 @@
 <resources>
 
     <declare-styleable name="ExtendViewPager">
-        <attr name="backgroundImage" format="reference"/>
-        <attr name="roundProgressColor" format="color"/>
-        <attr name="roundWidth" format="dimension"></attr>
-        <attr name="textColor" format="color" />
-        <attr name="textSize" format="dimension" />
-        <attr name="max" format="integer"></attr>
-        <attr name="textIsDisplayable" format="boolean"></attr>
-        <attr name="style">
-            <enum name="STROKE" value="0"></enum>
-            <enum name="FILL" value="1"></enum>
-        </attr>
+        <attr name="background_image" format="reference"/>
+        <attr name="pager_scroll_speed" format="integer"/>
     </declare-styleable>
 
 </resources>

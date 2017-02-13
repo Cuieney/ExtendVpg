@@ -17,7 +17,7 @@ import java.util.List;
 public class VpgAdapter extends PagerAdapter {
     private List<View> mViews;
 
-    public VpgAdapter(Context context, ViewPager viewPager, List<View> list) {
+    public VpgAdapter(List<View> list) {
         this.mViews = list;
     }
     // 获取要滑动的控件的数量，在这里我们以滑动的广告栏为例，那么这里就应该是展示的广告图片的ImageView数量

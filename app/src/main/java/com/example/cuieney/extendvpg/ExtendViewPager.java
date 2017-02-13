@@ -29,7 +29,7 @@ public class ExtendViewPager extends RelativeLayout {
     private ImageView mBgImg;
     private ViewPager mViewPager;
     private PagerAdapter mWrapperAdapter;
-
+    private int mDuration;
     public ExtendViewPager(Context context) {
         super(context);
         init(context);
@@ -41,7 +41,7 @@ public class ExtendViewPager extends RelativeLayout {
                 R.styleable.ExtendViewPager);
 
         mBackgroundImg = mTypedArray.getDrawable(R.styleable.ExtendViewPager_backgroundImage);
-
+        mDuration = mTypedArray.getInteger(R.styleable.ExtendViewPager_pagerScrollSpeed,1500);
         mTypedArray.recycle();
         init(context);
     }
@@ -53,7 +53,7 @@ public class ExtendViewPager extends RelativeLayout {
                 R.styleable.ExtendViewPager);
 
         mBackgroundImg = mTypedArray.getDrawable(R.styleable.ExtendViewPager_backgroundImage);
-
+        mDuration = mTypedArray.getInteger(R.styleable.ExtendViewPager_pagerScrollSpeed,1500);
         mTypedArray.recycle();
         init(context);
 
@@ -79,6 +79,7 @@ public class ExtendViewPager extends RelativeLayout {
     }
 
     private void settingVpg() {
+        setViewPagerScrollSpeed(mDuration);
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -118,6 +119,14 @@ public class ExtendViewPager extends RelativeLayout {
         mViewPager.setAdapter(adapter);
     }
 
+    public void addOnAdapterChangeListener(@NonNull ViewPager.OnAdapterChangeListener onAdapterChangeListener){
+        mViewPager.addOnAdapterChangeListener(onAdapterChangeListener);
+    }
+
+    public void setPageTransformer(boolean reverseDrawingOrder, ViewPager.PageTransformer transformer){
+        mViewPager.setPageTransformer(reverseDrawingOrder,transformer);
+    }
+
     public void setCurrentItem(int item){
         mViewPager.setCurrentItem(item);
     }
@@ -150,12 +159,6 @@ public class ExtendViewPager extends RelativeLayout {
     public void setBackgroundImage(@NonNull Bitmap bitmap){
         mBgImg.setImageBitmap(bitmap);
     }
-
-
-    public ViewPager getViewpager(){
-        return mViewPager;
-    }
-
 
     private void addBackground() {
         mBackground = new HorizontalScrollView(mContext);
