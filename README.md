@@ -30,3 +30,11 @@ Attributes | format | describe
 ------------ | ------------- | ------------
 background_image | reference  | 设置背景图片
 pager_scroll_speed | integer  | 设置viewpager滑动速度
+
+#### Method（代码中调用）
+
+methodName  | describe
+------------ | ------------
+setBackgroundImage | 设置背景图片
+setViewPagerScrollSpeed | 设置viewpager滑动速度
+setPageTransformer | 设置viewpager滑动动画
